@@ -35,7 +35,7 @@ public class Morse {
                 }
             }
 
-	     assert count == code.length() : "this is totaly wrong in morseToCode";
+	     assert count == code.length() : "this is totaly wrong in lettersTomorseCode";
             System.out.println(newstr);
 
         }else{
