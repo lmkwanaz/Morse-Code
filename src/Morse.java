@@ -1,4 +1,7 @@
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 public class Morse {
     public static String lettersToMorseCode(String code){
@@ -37,6 +40,33 @@ public class Morse {
 
 	     assert count == code.length() : "this is totaly wrong in lettersTomorseCode";
             System.out.println(newstr);
+
+            Pattern whitespace = Pattern.compile("\\s");
+            Matcher white = whitespace.matcher(newstr);
+            String[] separate = newstr.split(" ");
+            Pattern whitespace_code = Pattern.compile("\\s");
+            Matcher white_code = whitespace_code.matcher(code);
+            String[] separate_code = newstr.split(" ");
+            int count_space = 0;
+            int count_space1 = 0;
+
+            for(int i=0 ;i<separate.length; i++){
+                if(white.find()){
+                  count_space++;
+                }
+            }
+            int count_minus = count_space - 1;
+
+            for(int i=0 ;i<code.length(); i++){
+                if(white_code.find()){
+                    count_space1++;
+                }
+            }
+
+            int count_add = count_space1 + 1;
+
+            assert count_minus == count_add: "the number of spaces of output are not equal";
+            System.out.println("the number of spaces of the output are equal");
 
         }else{
             System.out.println("this field shouldn't be empty");
@@ -105,7 +135,7 @@ public class Morse {
         Scanner scan = new Scanner(System.in);
         System.out.println("please write something");
         String input = scan.nextLine();
-        //lettersToMorseCode(input);
-        morseCodeToLetters(input);
+        lettersToMorseCode(input);
+        //morseCodeToLetters(input);
     }
 }
